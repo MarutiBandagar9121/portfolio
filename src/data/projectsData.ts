@@ -1,9 +1,9 @@
 export interface Project {
   id: string;
   title: string;
+  tagline: string;
   shortDescription: string;
-  fullDescription: string;
-  points: string[];
+  highlights: string[];
   techStack: { name: string; color: string }[];
   github: string;
   image: string;
@@ -13,17 +13,14 @@ export const projects: Project[] = [
   {
     id: "jobstream-ai",
     title: "JobStream AI",
+    tagline: "Semantic job discovery powered by vector search & distributed crawling.",
     shortDescription:
-      "An intelligent job aggregation platform that uses semantic search and distributed crawling to help users discover relevant opportunities through natural language queries.",
-    fullDescription:
-      "JobStream AI is a sophisticated job aggregation platform that revolutionizes how job seekers discover opportunities. By leveraging distributed web crawling, vector database technology, and semantic search, it allows users to find jobs using natural language queries instead of traditional keyword matching. The system features automated job aggregation from multiple sources, real-time notifications, and a subscription-based alert system that keeps users updated on opportunities matching their preferences.",
-    points: [
-      "Architected a distributed web crawling system using Express.js and BullMQ to asynchronously aggregate job listings from multiple sources, utilizing a worker-producer model to handle high-volume data ingestion.",
-      "Implemented high-performance semantic search by integrating Qdrant Vector Database, enabling users to find relevant job opportunities through natural language queries rather than simple keyword matching.",
-      "Engineered an automated notification engine featuring scheduled Cron jobs and a subscription-based mailing system to provide real-time updates on new openings tailored to specific roles and regions.",
-      "Designed a fault-tolerant queue system with BullMQ and Redis to manage crawling tasks, ensuring reliable job data collection even during peak loads.",
-      "Integrated OpenAI embeddings to convert job descriptions and user queries into vector representations for accurate semantic matching.",
-      "Built a responsive dashboard for users to manage job preferences, view application history, and track saved opportunities.",
+      "An intelligent job aggregation platform that lets users find opportunities through natural language — not just keywords.",
+    highlights: [
+      "Built a worker-producer crawling pipeline with BullMQ & Redis to ingest job listings from multiple sources asynchronously at scale.",
+      "Integrated Qdrant vector DB with OpenAI embeddings to power semantic search — users query in plain English and get contextually ranked results.",
+      "Engineered a scheduled notification engine that alerts subscribers to new openings matching their role and region preferences.",
+      "Designed a fault-tolerant queue system that keeps data collection reliable even under peak crawling load.",
     ],
     techStack: [
       { name: "Express.js", color: "bg-slate-700" },
@@ -31,7 +28,6 @@ export const projects: Project[] = [
       { name: "Redis", color: "bg-red-500" },
       { name: "Qdrant", color: "bg-purple-600" },
       { name: "OpenAI", color: "bg-indigo-600" },
-      { name: "Deepseek", color: "bg-indigo-800" },
       { name: "Node.js", color: "bg-green-500" },
       { name: "MongoDB", color: "bg-green-600" },
       { name: "React", color: "bg-blue-500" },
@@ -44,68 +40,61 @@ export const projects: Project[] = [
   {
     id: "lead-management-api",
     title: "Lead Management API",
+    tagline: "Production-ready REST API with containerized multi-service deployment.",
     shortDescription:
-      "A secure and scalable RESTful API for managing sales leads with role-based access control and containerized deployment.",
-    fullDescription:
-      "A comprehensive lead management solution built with Express.js that enables sales teams to efficiently track, manage, and convert leads. The system features robust authentication with JWT tokens, role-based access control for different user types (admin, manager, sales rep), and secure data validation. Deployed using Docker containers orchestrated with Docker Compose, ensuring a consistent and scalable multi-service environment.",
-    points: [
-      "Architected and deployed a containerized lead management application using Docker, orchestrating the Express.js API, MongoDB, and Redis containers with Docker Compose, ensuring a consistent and scalable multi-service environment.",
-      "Secured the application with JSON Web Tokens (JWT), implementing role-based access control and a refresh token mechanism to enhance security and maintain persistent user sessions.",
-      "Designed a predictable and reliable API with standardized response formats for both success and error scenarios, ensuring a consistent client-side experience.",
-      "Enforced robust data integrity and security by utilizing Zod for comprehensive validation of all API inputs.",
-      "Implemented Redis caching layer to optimize lead retrieval performance and reduce database load by up to 40%.",
-      "Developed comprehensive API documentation using Swagger/OpenAPI specification for seamless developer onboarding.",
+      "A secure, scalable lead management backend with role-based access control, Redis caching, and a fully Dockerized infrastructure.",
+    highlights: [
+      "Orchestrated a multi-container environment with Docker Compose — API, MongoDB, and Redis running as isolated, reproducible services.",
+      "Implemented JWT auth with refresh token rotation and role-based access control for admin, manager, and sales rep personas.",
+      "Added a Redis caching layer that cut lead retrieval latency by ~40% and reduced database read pressure.",
+      "Enforced strict data integrity at every API boundary using Zod schema validation with standardized error responses.",
     ],
     techStack: [
       { name: "Express", color: "bg-slate-700" },
-      { name: "Mongo DB", color: "bg-green-600" },
+      { name: "MongoDB", color: "bg-green-600" },
       { name: "Redis", color: "bg-red-500" },
       { name: "Docker", color: "bg-blue-500" },
       { name: "Docker Compose", color: "bg-blue-800" },
       { name: "Zod", color: "bg-gray-700" },
       { name: "JWT", color: "bg-amber-300 text-black" },
     ],
-    github:
-      "https://github.com/MarutiBandagar9121/LeadManagementSystem-ExpressJS",
+    github: "https://github.com/MarutiBandagar9121/LeadManagementSystem-ExpressJS",
     image: "/portfolio/images/projects/leadManagementApi.png",
   },
+
   {
     id: "indian-id-validator",
-    title: "Indian Id Validator",
+    title: "Indian ID Validator",
+    tagline: "Zero-dependency npm package for validating Indian government IDs.",
     shortDescription:
-      "A robust open-source npm package for validating Indian government IDs including Aadhaar, PAN, Voter ID, and GST numbers.",
-    fullDescription:
-      "A comprehensive TypeScript-based npm package that provides developers with reliable validation utilities for various Indian government identification documents. The package ensures correct format and checksum validation for Aadhaar numbers, PAN cards, Voter IDs, GST numbers, and Indian mobile numbers. Built with modern tooling to support both CommonJS and ES Module environments.",
-    points: [
-      "Engineered and published indian-id-validator, a robust open-source npm package that provides comprehensive validation for Indian government IDs including Aadhaar, PAN, Voter ID, and GST numbers.",
-      "Built with TypeScript to ensure type safety and superior developer experience, leveraging Vite to configure a build pipeline that generates both CommonJS and ES module distributions for maximum compatibility.",
-      "Implemented industry-standard validation algorithms including Verhoeff checksum for Aadhaar numbers and format validation for PAN card structure.",
-      "Achieved zero-dependency design to keep the package lightweight and secure for all consuming applications.",
-      "Published to npm registry with automated build pipeline and comprehensive test coverage to ensure reliability.",
+      "A TypeScript-first open-source library that validates Aadhaar, PAN, Voter ID, GST numbers — published to npm with dual CJS/ESM support.",
+    highlights: [
+      "Implemented the Verhoeff checksum algorithm for Aadhaar and format-based validation for PAN, Voter ID, and GST numbers.",
+      "Shipped with zero runtime dependencies — keeping the package lightweight and safe for any production environment.",
+      "Configured Vite to produce both CommonJS and ES Module builds, ensuring compatibility across Node.js and bundler ecosystems.",
+      "Published to npm registry with TypeScript type declarations for a first-class developer experience.",
     ],
     techStack: [
       { name: "TypeScript", color: "bg-blue-700" },
       { name: "Node.js", color: "bg-green-600" },
       { name: "Vite", color: "bg-purple-500" },
-      { name: "JavaScript", color: "bg-yellow-500 text-black" },
       { name: "npm", color: "bg-red-600" },
     ],
     github: "https://github.com/MarutiBandagar9121/indian-id-validator",
     image: "/portfolio/images/projects/indianIdValidator.png",
   },
+
   {
     id: "animeflix",
     title: "AnimeFlix",
+    tagline: "Full-stack streaming platform with OTP auth and personalized watchlists.",
     shortDescription:
-      "A full-stack anime streaming platform with secure authentication and personalized watchlists.",
-    fullDescription:
-      "AnimeFlix is a feature-rich anime streaming platform that allows users to discover, stream, and manage their favorite anime shows. The platform features secure user authentication with OTP email verification, personalized watchlists, and a responsive UI for seamless browsing across devices. Built with modern frontend technologies and a robust backend infrastructure.",
-    points: [
-      "Developed a full-stack anime streaming platform using React, Tailwind CSS, PHP, Apache, and PostgreSQL.",
-      "Implemented secure user authentication with OTP-based email verification for enhanced account security.",
-      "Designed a responsive and intuitive UI with Tailwind CSS, featuring anime cards, search functionality, and category filtering.",
-      "Built RESTful APIs with PHP to handle user management, anime listings, and watchlist operations.",
-      "Optimized PostgreSQL database with proper indexing for fast anime search and retrieval.",
+      "A feature-rich anime streaming app built with React, PHP, and PostgreSQL — complete with secure authentication and responsive UI.",
+    highlights: [
+      "Built end-to-end authentication with OTP-based email verification, protecting accounts without third-party auth services.",
+      "Designed RESTful PHP APIs handling user management, anime listings, and watchlist CRUD operations.",
+      "Optimized PostgreSQL with proper indexing for fast search and category-based filtering across large anime datasets.",
+      "Delivered a fully responsive UI with Tailwind CSS — anime cards, search, and filtering work seamlessly across devices.",
     ],
     techStack: [
       { name: "React", color: "bg-blue-400" },
@@ -113,31 +102,27 @@ export const projects: Project[] = [
       { name: "PHP", color: "bg-indigo-600" },
       { name: "PostgreSQL", color: "bg-blue-800" },
       { name: "Apache", color: "bg-red-600" },
-      { name: "JavaScript", color: "bg-yellow-500" },
     ],
     github: "https://github.com/MarutiBandagar9121/AnimeFlix",
     image: "/portfolio/images/projects/animeflix.png",
   },
+
   {
     id: "milk-mart",
     title: "Milk Mart",
+    tagline: "Dairy business management — inventory, orders, and reporting in one place.",
     shortDescription:
-      "A comprehensive dairy management solution for tracking inventory, orders, and products.",
-    fullDescription:
-      "Milk Mart is a dairy management platform designed to streamline operations for dairy businesses. It provides an intuitive admin dashboard for managing inventory, processing orders, and tracking products. The system helps dairy owners efficiently handle daily operations, customer orders, and stock management in one centralized platform.",
-    points: [
-      "Built a comprehensive dairy management solution with PHP and MySQL for efficient business operations.",
-      "Developed an admin dashboard for streamlined inventory, order, and product management.",
-      "Implemented real-time stock tracking and automated low-stock alerts for proactive inventory management.",
-      "Designed a customer-facing interface for browsing products and placing recurring milk orders.",
-      "Created detailed reporting features for sales analysis and business insights.",
+      "A centralized dairy operations platform built with PHP and MySQL, with an admin dashboard, real-time stock alerts, and sales analytics.",
+    highlights: [
+      "Built an admin dashboard covering inventory management, order processing, and product catalog in a single interface.",
+      "Implemented real-time low-stock alerts to proactively prevent inventory shortfalls.",
+      "Created a customer-facing portal for browsing products and placing recurring milk delivery orders.",
+      "Developed sales reporting features giving business owners actionable insight into revenue and stock trends.",
     ],
     techStack: [
       { name: "PHP", color: "bg-indigo-600" },
       { name: "MySQL", color: "bg-orange-500" },
       { name: "JavaScript", color: "bg-yellow-500" },
-      { name: "HTML5", color: "bg-orange-600" },
-      { name: "CSS3", color: "bg-blue-600" },
       { name: "Bootstrap", color: "bg-purple-600" },
     ],
     github: "https://github.com/MarutiBandagar9121/MilkMart",

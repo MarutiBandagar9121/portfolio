@@ -39,7 +39,7 @@ const socials = [
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 bg-slate-950 text-white relative overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-24 bg-slate-950 text-white relative overflow-hidden">
 
       {/* Dot grid */}
       <div className="absolute inset-0 bg-dot-grid opacity-60 pointer-events-none" />
@@ -67,7 +67,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.04] tracking-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.06] tracking-tight">
           Engineering{" "}
           <span className="gradient-text">Scalable</span>
           <br className="hidden sm:block" />
