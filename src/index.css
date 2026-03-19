@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-slate-950 text-gray-200;
+  overflow-x: hidden;
 }
+
+/* ─── Custom Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+
+/* ─── Dot Grid Background ──────────────────────────────── */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.13) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+/* ─── Animated Gradient Text ───────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #a78bfa 45%, #22d3ee 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ─── Floating Blobs ───────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes float-alt {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33%       { transform: translateY(-10px) translateX(8px); }
+  66%       { transform: translateY(6px) translateX(-6px); }
+}
+
+.animate-float      { animation: float 7s ease-in-out infinite; }
+.animate-float-alt  { animation: float-alt 9s ease-in-out infinite; }
+
+/* ─── Skill card shimmer on hover ─────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ─── Scroll indicator bounce ──────────────────────────── */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+.animate-bounce-down { animation: bounce-down 1.8s ease-in-out infinite; }
